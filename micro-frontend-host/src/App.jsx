@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
-import { MySolidComponent } from "solidapp/MySolidComponent";
+import MySolidComponent from "solidapp/Button";
 function App() {
   return (
     <div>

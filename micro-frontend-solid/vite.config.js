@@ -8,13 +8,16 @@ export default defineConfig({
     federation({
       name: "solid_app", // Unique name for this micro-frontend
       filename: "remoteEntry.js", // Name of the entry point file
-      remotes: { remote: "http://localhost:5020/dist/assets/remoteEntry.js" },
+      remotes: {
+        solidapp: "http://localhost:5020/dist/assets/remoteEntry.js",
+        cart: "http://localhost:5003/dist/assets/remoteEntry.js",
+      },
       exposes: {
-        "./MySolidComponent": "./src/MySolidComponent.jsx", // Expose the Solid.js component
+        "./Button": "./src/components/MySolidComponent/MySolidComponent.jsx", // Expose the Solid.js component
+        "./AddToCart": "./src/components/AddToCart/AddToCart.jsx",
+        "./PlaceAddToCart": "./src/PlaceAddToCart.jsx",
       },
-      shared: {
-        "solid-js": { singleton: true, requiredVersion: "1.9.4" },
-      },
+      shared: ["solid-js"],
     }),
   ],
   build: {
@@ -22,5 +25,10 @@ export default defineConfig({
     target: "esnext", // or 'modules' for wider modern browser support
     minify: false, // For development, set to false for easier debugging
     cssCodeSplit: false,
-  },
+  }, // Add this for JSX support in .js files (OR rename to .jsx)
+  // esbuild: {
+  //   jsxFactory: "h",
+  //   jsxFragment: "Fragment",
+  //   jsxInject: `import { h, Fragment } from 'solid-js'`,
+  // },
 });
