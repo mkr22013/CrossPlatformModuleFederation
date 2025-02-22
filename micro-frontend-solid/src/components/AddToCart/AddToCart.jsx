@@ -14,7 +14,9 @@ function AddToCart({ id }) {
   return (
     <div className="my-component">
       <Show when={loggedIn()}>
-        <button onClick={() => addToCart(id)}>Add To Cart</button>
+        <button id={`addtocart_${id}`} onClick={() => addToCart(id)}>
+          Add To Cart
+        </button>
       </Show>
     </div>
   );
@@ -29,7 +31,7 @@ customElements.define(
       const shadowRoot = this.attachShadow({ mode: "open" });
       const style = document.createElement("style");
 
-      fetch("./AddToCart.css")
+      fetch(new URL("./AddToCart.css", import.meta.url).toString())
         .then((response) => {
           if (!response.ok) {
             // Check for HTTP errors

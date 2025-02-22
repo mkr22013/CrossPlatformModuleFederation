@@ -26,3 +26,14 @@ Your app is ready to be deployed!
 ## Deployment
 
 Learn more about deploying your application with the [documentations](https://vite.dev/guide/static-deploy.html)
+
+### Module federation and web component CSS Major take aways
+
+File Paths Are Crucial: Double and triple-check all your file paths, especially in module federation environments.
+Shadow DOM and CSS: Understand how the Shadow DOM works and how to correctly apply CSS within it using Constructible Stylesheets and adoptedStyleSheets.
+import.meta.url: This is the most reliable way to resolve file paths, especially in module federation.
+fetch and URLs: Remember that fetch expects a URL string, not a URL object.
+Build Tool Configuration: Module federation and other build tool plugins can affect how assets are handled.
+Caching: Browser and build tool caching can cause unexpected behavior.
+Debugging Methodically: Break down the problem into smaller parts and test each part in isolation.
+Console Errors and Network Tab: Use the browser's developer tools to inspect network requests and console errors.
