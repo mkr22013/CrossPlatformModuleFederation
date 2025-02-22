@@ -12,7 +12,7 @@ function AddToCart({ id }) {
     });
   });
   return (
-    <div className="my-solid-component">
+    <div className="my-component">
       <Show when={loggedIn()}>
         <button onClick={() => addToCart(id)}>Add To Cart</button>
       </Show>
